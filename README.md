@@ -1,0 +1,1 @@
+This is a single-page application built with React and Redux. It is the frontend counterpart to "MusicApi". The purpose of this project was to get comfortable with React and Redux.
