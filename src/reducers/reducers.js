@@ -17,8 +17,8 @@ export function rootReducer(state = initialState, action) {
       let song = action.payload.data;
       return { ...state,
         artists: state.artists.map(a => {
-          if (a.id === song.artistId) {
-            a.songs = a.songs.concat(song);
+          if (a.Id === song.ArtistId) {
+            a.Songs = a.Songs.concat(song);
           }
           return a;
         })
@@ -27,15 +27,15 @@ export function rootReducer(state = initialState, action) {
     case 'DELETE_ARTIST_SUCCESS':
       artist = action.payload.data;
       return { ...state,
-        artists: state.artists.filter(a => a.id !== artist.id)
+        artists: state.artists.filter(a => a.Id !== artist.Id)
       }
 
     case 'DELETE_SONG_SUCCESS':
       song = action.payload.data;
       return { ...state,
         artists: state.artists.map(a => {
-          if (a.id === song.artistId) {
-            a.songs = a.songs.filter(s => s.id !== song.id);
+          if (a.Id === song.ArtistId) {
+            a.Songs = a.Songs.filter(s => s.Id !== song.Id);
           }
           return a;
         })

@@ -9,43 +9,43 @@ export const ArtistList = props => {
     <div className="ArtistList">
       {
         props.artists.map(artist =>
-          <Artist key={artist.id} {...artist} addSong={props.addSong} deleteArtist={props.deleteArtist} deleteSong={props.deleteSong} />
+          <Artist key={artist.Id} {...artist} addSong={props.addSong} deleteArtist={props.deleteArtist} deleteSong={props.deleteSong} />
         )
       }
     </div>
-  );
-};
+  )
+}
 
 export const Artist = props => {
   return (
     <Collapsible className="Artist" openedClassName="Artist" trigger={artistTitle(props)} transitionTime={200}>
       <AddSongForm artist={props} onSubmit={props.addSong} />
-      <SongList artist={props} songs={props.songs} deleteSong={props.deleteSong} />
+      <SongList artist={props} songs={props.Songs} deleteSong={props.deleteSong} />
     </Collapsible>
-  );
-};
+  )
+}
 
 const artistTitle = props => {
   return (
     <div>
-      {props.name}
+      {props.Name}
       <i className="fa fa-fw fa-chevron-down" />
       <i className="fa fa-fw fa-chevron-up" />
       <i className="fa fa-minus" onClick={e => { props.deleteArtist(props) }} />
     </div>
-  );
-};
+  )
+}
 
 export class AddArtistForm extends React.Component {
   state = {
     artistName: ""
-  };
+  }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit({ name: this.state.artistName });
+    this.props.onAddArtist({ name: this.state.artistName });
     this.setState({ artistName: "" });
-  };
+  }
 
   render() {
     return (
@@ -59,6 +59,6 @@ export class AddArtistForm extends React.Component {
         />
         <button type="submit">+</button>
       </form>
-    );
+    )
   }
 }

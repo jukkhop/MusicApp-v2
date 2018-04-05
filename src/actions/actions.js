@@ -30,7 +30,7 @@ export function deleteArtist(artist) {
   return {
     type: "DELETE_ARTIST",
     payload: {
-      request: { method: 'delete', url: `/Artists/${artist.id}` }
+      request: { method: 'delete', url: `/Artists/${artist.Id}` }
     }
   }
 }
@@ -39,7 +39,7 @@ export function deleteSong(song) {
   return {
     type: "DELETE_SONG",
     payload: {
-      request: { method: 'delete', url: `/Songs/${song.id}/` }
+      request: { method: 'delete', url: `/Songs/${song.Id}/` }
     }
   }
 }

@@ -4,7 +4,7 @@ import { getArtists, addArtist, addSong, deleteArtist, deleteSong } from './../a
 import './../styles/app.css';
 import './../styles/font-awesome.min.css';
 
-export class App extends Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
@@ -12,23 +12,23 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    this.store.dispatch(getArtists())
+    this.store.dispatch(getArtists());
   }
 
   handleAddArtist = artist => {
-    this.store.dispatch(addArtist(artist))
+    this.store.dispatch(addArtist(artist));
   }
 
   handleAddSong = song => {
-    this.store.dispatch(addSong(song))
+    this.store.dispatch(addSong(song));
   }
 
   handleDeleteArtist = artist => {
-    this.store.dispatch(deleteArtist(artist))
+    this.store.dispatch(deleteArtist(artist));
   }
 
   handleDeleteSong = song => {
-    this.store.dispatch(deleteSong(song))
+    this.store.dispatch(deleteSong(song));
   }
 
   render() {
@@ -42,7 +42,7 @@ export class App extends Component {
         </header>
         <div className="App-body">
           <h1>Artists</h1>
-          <AddArtistForm onSubmit={this.handleAddArtist} />
+          <AddArtistForm onAddArtist={this.handleAddArtist} />
           <ArtistList
             artists={this.store.getState().artists}
             addSong={this.handleAddSong}
