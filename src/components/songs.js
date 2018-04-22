@@ -1,9 +1,9 @@
-import React from 'react';
-import './../styles/songs.css';
+import React from 'react'
+import '../styles/songs.css'
 
-export const SongList = props => {
-  if (props.songs === undefined) {
-    return <div className="SongList"></div>;
+const SongList = props => {
+  if (!props.songs) {
+    return <div></div>;
   }
   return (
     <div className="SongList">
@@ -16,7 +16,7 @@ export const SongList = props => {
   )
 }
 
-export const Song = props => {
+const Song = props => {
   return (
     <div className="Song">
       {props.Name}
@@ -27,12 +27,10 @@ export const Song = props => {
   )
 }
 
-export class AddSongForm extends React.Component {
+class AddSongForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      artist: props.artist,
       songName: ""
     }
   }
@@ -41,7 +39,7 @@ export class AddSongForm extends React.Component {
     event.preventDefault();
 
     const song = {
-      artistId: this.state.artist.Id,
+      artistId: this.props.artist.Id,
       name: this.state.songName,
       lengthSeconds: 0,
       isFavoriteArtist: false
@@ -65,4 +63,9 @@ export class AddSongForm extends React.Component {
       </form>
     )
   }
+}
+
+export {
+  SongList,
+  AddSongForm
 }

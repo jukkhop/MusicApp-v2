@@ -1,10 +1,13 @@
-import React from 'react';
-import Collapsible from 'react-collapsible';
-import { SongList, AddSongForm } from './songs.js';
-import './../styles/artists.css';
-import './../styles/font-awesome.min.css';
+import React from 'react'
+import Collapsible from 'react-collapsible'
+import { SongList, AddSongForm } from './songs.js'
+import '../styles/artists.css'
+import '../styles/font-awesome.min.css'
 
-export const ArtistList = props => {
+const ArtistList = props => {
+  if (!props.artists) {
+    return <div></div>
+  }
   return (
     <div className="ArtistList">
       {
@@ -16,7 +19,7 @@ export const ArtistList = props => {
   )
 }
 
-export const Artist = props => {
+const Artist = props => {
   return (
     <Collapsible className="Artist" openedClassName="Artist" trigger={artistTitle(props)} transitionTime={200}>
       <AddSongForm artist={props} onSubmit={props.addSong} />
@@ -31,12 +34,15 @@ const artistTitle = props => {
       {props.Name}
       <i className="fa fa-fw fa-chevron-down" />
       <i className="fa fa-fw fa-chevron-up" />
-      <i className="fa fa-minus" onClick={e => { props.deleteArtist(props) }} />
+      <i className="fa fa-minus" onClick={event => {
+        event.stopPropagation();
+        props.deleteArtist(props);
+      }} />
     </div>
   )
 }
 
-export class AddArtistForm extends React.Component {
+class AddArtistForm extends React.Component {
   state = {
     artistName: ""
   }
@@ -61,4 +67,9 @@ export class AddArtistForm extends React.Component {
       </form>
     )
   }
+}
+
+export {
+  ArtistList,
+  AddArtistForm
 }
